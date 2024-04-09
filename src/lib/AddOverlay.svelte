@@ -35,7 +35,7 @@
 								>Terms of Service</a
 							> apply.
 						</div>
-						<ActionButton link="">Add</ActionButton>
+						<ActionButton link="">Post</ActionButton>
 					</div>
 				</section>
 		</div>
