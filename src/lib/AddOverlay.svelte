@@ -1,10 +1,62 @@
 <script lang="ts">
-	import { addOverlayVisible } from '../stores';
+	import {
+		addOverlayVisible,
+		filteredDataStore,
+		descriptionDataStore,
+		fullDataStore
+	} from '../stores';
 	import ActionButton from './ActionButton.svelte';
 	import CloseButton from './CloseButton.svelte';
 
 	function closeAddOverlay() {
 		addOverlayVisible.update(() => false);
+	}
+
+	// Assuming moments is already defined and loaded with your JSON data
+	let description = ''; // For binding to your textarea
+
+	function addMoment() {
+		// adding data to the filtered_data_id_only.json
+		filteredDataStore.update((currentData) => {
+			const newFeature = {
+				type: 'Feature',
+				properties: { id: currentData.features.length + 1 },
+				geometry: {
+					type: 'Point',
+					coordinates: [-73.695114, 45.529621]
+				}
+			};
+			return { ...currentData, features: [...currentData.features, newFeature] };
+		});
+
+		// adding description pair to the id_description_pairs.json
+		descriptionDataStore.update((currentDescriptions) => {
+			const newDescriptionPair = {
+				id: currentDescriptions.length + 1,
+				description: description
+			};
+			return [...currentDescriptions, newDescriptionPair];
+		});
+
+		// adding full data to filtered_data.json
+		fullDataStore.update((currentData) => {
+			const newData = {
+				type: 'Feature',
+				properties: { id: currentData.features.length + 1, description: description },
+				geometry: {
+					type: 'Point',
+					coordinates: [-73.695114, 45.529621]
+				}
+			};
+			return { ...currentData, features: [...currentData.features, newData] };
+		});
+
+		// print out updated
+		const unsubscribe = fullDataStore.subscribe((updatedItems) => {
+			console.log('Updated store items:', updatedItems);
+		});
+		unsubscribe();
+		description = ''; // Reset the description for next input
 	}
 </script>
 
@@ -13,31 +65,27 @@
 		<CloseButton functionOnClick={closeAddOverlay} position="right">close add overlay</CloseButton>
 	</div>
 	<div class="overlay__outer">
-			<div class="overlay__content">
-				<section>
-					<div class="overlay__section-title">How to add to the map</div>
+		<div class="overlay__content">
+			<section>
+				<div class="overlay__section-title">How to add to the map</div>
 
-					<div class="overlay__section-text">
-						<ol>
-							<li>Click on the location of your story.</li>
-							<li>Share your story in the the text box below.</li>
-							<li>Click the 'ADD' button.</li>
-						</ol>
-						<br />
-						<textarea id="txt_contents" class="subform"></textarea>
-						<div class="recaptcha-text">
-							This site is protected by reCAPTCHA and the Google
-							<a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
-								>Privacy Policy</a
-							>
-							and
-							<a href="https://policies.google.com/terms" target="_blank" rel="noopener"
-								>Terms of Service</a
-							> apply.
-						</div>
-						<ActionButton link="">Add</ActionButton>
+				<div class="overlay__section-text">
+					What song connects you to this location?
+					<br />
+					<div class="recaptcha-text">
+						This site is protected by reCAPTCHA and the Google
+						<a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
+							>Privacy Policy</a
+						>
+						and
+						<a href="https://policies.google.com/terms" target="_blank" rel="noopener"
+							>Terms of Service</a
+						> apply.
 					</div>
-				</section>
+					<textarea bind:value={description} class="subform"></textarea>
+					<ActionButton on:click={addMoment}>Add</ActionButton>
+				</div>
+			</section>
 		</div>
 	</div>
 </aside>
@@ -54,7 +102,7 @@
 
 	.overlay__outer {
 		width: calc(40vw - 2px);
-        padding: 2em;
+		padding: 2em;
 	}
 
 	.overlay__section-title {
@@ -142,7 +190,7 @@
 		font-family: 'Apfel Grotezk', sans-serif;
 	}
 
-    .action-button-container {
-        right: 0;
-    }
+	.action-button-container {
+		right: 0;
+	}
 </style>

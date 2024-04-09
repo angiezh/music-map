@@ -50,11 +50,6 @@
 			"type": "Feature",
 			"properties": { "id": 10 },
 			"geometry": { "type": "Point", "coordinates": [-73.571939, 45.499833] }
-		},
-		{
-			"type": "Feature",
-			"properties": { "id": 11 },
-			"geometry": { "type": "Point", "coordinates": [-73.625114, 45.529621] }
 		}
 	]
 }
