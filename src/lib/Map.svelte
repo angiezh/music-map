@@ -42,15 +42,34 @@
 				data: moments
 			});
 
+			map.loadImage('src/lib/assets/Musicnotes.png', async function(error, image){
+    		if (error) throw error;
+   	 		map.addImage('Musicnotes', image);
+			console.log("image loaded")
+  			});
+			
+			// map.addLayer({
+			// id: 'moments-layer',
+			// type: 'circle',
+			// source: 'moments',
+			// paint: {
+			// 'circle-radius': 8,
+			// 'circle-color': 'black'
+			// }
+			// });
+
 			map.addLayer({
-				id: 'moments-layer',
-				type: 'circle',
-				source: 'moments',
-				paint: {
-					'circle-radius': 8,
-					'circle-color': 'black'
-				}
+  			'id': 'moments-layer',
+  			'type': 'symbol',
+  			'source': 'moments',
+  			'layout': {
+    		'icon-image': 'Musicnotes',
+    		'icon-size': ['*', ['get', 'scalerank'], 0.001],
+			'icon-allow-overlap': true 
+  			},
+  			'paint': {}
 			});
+
 
 			map.on('click', 'moments-layer', function (e) {
 				if (e.features && e.features.length > 0) {
@@ -75,6 +94,7 @@
 					}
 				}
 			});
+
 
 			// Change the cursor to a pointer when the mouse is over the moments layer.
 			map.on('mouseenter', 'moments-layer', function () {
