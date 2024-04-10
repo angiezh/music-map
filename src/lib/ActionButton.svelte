@@ -1,10 +1,17 @@
 <script lang="ts">
-export let link: string;
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
+	function handleClick() {
+		dispatch('click');
+	}
 </script>
+
 <div class="button-wrapper">
-	<a href={link} class="button" target="_blank" rel="noopener"
-		><slot></slot></a
-	>
+	<!-- Use an onClick handler instead of link -->
+	<button class="button" on:click={handleClick}>
+		<slot />
+	</button>
 </div>
 
 <style>
@@ -27,7 +34,8 @@ export let link: string;
 		transition-timing-function: ease;
 	}
 
-	.button:hover, .button:focus {
+	.button:hover,
+	.button:focus {
 		color: var(--color-pink-bright);
 		border: 2px solid var(--color-pink-bright);
 		background: var(--color-dark);
