@@ -71,18 +71,6 @@
 
 				<div class="overlay__section-text">
 					What song connects you to this location?
-					<br />
-					<div class="recaptcha-text">
-						This site is protected by reCAPTCHA and the Google
-						<a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
-							>Privacy Policy</a
-						>
-						and
-						<a href="https://policies.google.com/terms" target="_blank" rel="noopener"
-							>Terms of Service</a
-						> apply.
-					</div>
-					<textarea bind:value={description} class="subform"></textarea>
 					<ActionButton on:click={addMoment}>Add</ActionButton>
 				</div>
 			</section>
