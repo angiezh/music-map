@@ -1,5 +1,5 @@
 <script>
-	import logo from '$lib/assets/queering-the-map-logo.webp';
+	import logo from '$lib/assets/music-map-logomvp.png';
 	import infoButton from '$lib/assets/info.svg';
 	import addButton from '$lib/assets/add.svg';
 	import { infoOverlayVisible, addOverlayVisible } from '../stores';
@@ -24,6 +24,8 @@
 			<img class="overlay-trigger__icon" src={infoButton} alt="info" />
 		</button>
 	{/if}
+
+	
 
 	<div id="logo">
 		<img src={logo} alt="" />

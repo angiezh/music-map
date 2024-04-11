@@ -9,15 +9,15 @@
 </script>
 
 <svelte:head>
-	<title>QUEERING THE MAP</title>
+	<title>Music Map</title>
 	<meta
 		name="description"
-		content="Queering the Map is a community generated counter-mapping platform for digitally archiving LGBTQ2IA+ experience in relation to physical space."
+		content="Music Map is a community resource dedicated to giving people a social space to share music related to places that might feel special to them, and the stories they have with their favourite music."
 	/>
 
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.queeringthemap.com/" />
-	<meta property="og:title" content="Queering The Map" />
+	<meta property="og:title" content="Music Map" />
 	<meta property="og:image" content={qtm_sharing_image} />
 	<meta
 		property="og:description"
