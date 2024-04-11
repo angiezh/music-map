@@ -5,7 +5,8 @@
 			"type": "Feature",
 			"properties": {
 				"id": 1,
-				"description": "The place we will meet to describe our ruminations on our selves, and the parts that are hiding from each other. A future moment of queerness, just a few minutes from now*. "
+				"song": "Snooze by SZA",
+				"description": "Really awesome song that my friend showed me last month and we listened to it a lot together."
 			},
 			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
 		},
@@ -13,70 +14,19 @@
 			"type": "Feature",
 			"properties": {
 				"id": 2,
-				"description": "10 Pines, as anglos call it, has the first members of its present queer community move in around 7 years ago. Butches, drag queens, naked hippies, kinky femmes, sex workers, queer and trans activists and artists from various economical, cultural and racial backgrounds have slowly been taking over more and more lofts in the building, sleeping in tiny mezzanines and sharing common spaces. This space brought me space to explore my gender, pretty cool kinky technical skills and faith into healthy polyamory."
+				"song": "Love Story by Taylor Swift",
+				"description": "I listened to this song walking to the Hive."
 			},
 			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.10661] }
 		},
 		{
 			"type": "Feature",
-			"properties": { "id": 3, "description": "this used to be a queer spot that I liked a lot" },
+			"properties": {
+				"id": 3,
+				"song": "Good Days by SZA",
+				"description": "I listened to this song everyday freshman year."
+			},
 			"geometry": { "type": "Point", "coordinates": [-117.72531, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 4,
-				"description": "we argued about the best way to deal with  those who do not respect (u)s, and others, and others still more other but still more like us then like them. underneath this was a feeling of insufficiency from me. the cook was a cutie. he made us poutine."
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 5,
-				"description": "A riverside sunset gay/queer frolic took place for pervers/cite. I felt like i'd found home. "
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 6,
-				"description": "Location of the Queering the Map Residency at the Fine Arts Reading Room"
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 7,
-				"description": "This is the building where both TRUXX and Mystique were. They were core parts of the Peel/Stanley neighbourhood in the 70's, and Mystique was Mtl's oldest gay bar until its doors closed in 2009. On October 22nd 1977, both bars were raided by police and more than 400 people arrested and thrown in jail. The resulting protests were more than 3000 strong, and are credited in part with the passage of Law 88, which made QC the first province to criminalize discrimination based on sexuality. "
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 8,
-				"description": "Androgyny / Librarie lAndrogyne (Montral's first LGBT bookstore 1973-2002)\n\n on Crescent Street south of Ste-Catherine in a space two steps down from the sidewalk -Archives Gaies du Qubec \n\n\"Androgyny quickly became a gathering place for people influenced by and participating in the various sexual liberation movements of the sixties and seventies. Women would bring in their children to look at children's books, sharing the space with gay men browsing through periodicals for shirtless guys. While we always expected there to be some conflict between our varied constituencies, that never happened; perhaps because of the accepting attitudes modelled by ourselves and Barbara[..] We would frequently see men repeatedly passing by the book store, looking non-chalantly at the titles in the windows with each pass, before gathering the courage to enter. I've encountered many men years later who told me that their first step in coming out was walking through the door of the bookstore, which gave them the courage and resources they needed to move further.[...]Unbeknownst to us when we first moved onto the street, there happened to be a gay sauna in the same building. Interestingly, there were many gay men who found it more frightening to come into the bookstore than going to the sauna; the latter being, however intimate, a much more anonymous venture than the former.\" - Bruce Garside, one of the first owners of the shop \n"
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 9,
-				"description": "the Chutes St Marguerite are a sunbathing and cruising spot, have been for decades. My friends and I go there every summer, just to sit and have a picnic usually. There's a way the rocks have been worn away that you can use as a slide. "
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 10,
-				"description": "used to be Baby Face Disco (1956-1980s), Montral's first \"lesbian-only drinking establishment\", managed and bounced (sometimes with a baseball bat) by the eponymous, reclusive one-time wrestler Baby Face "
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
 		}
 	]
 }
