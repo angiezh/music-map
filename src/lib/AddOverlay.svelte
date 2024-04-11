@@ -14,6 +14,7 @@
 
 	// Assuming moments is already defined and loaded with your JSON data
 	let description = ''; // For binding to your textarea
+	let song = '';
 
 	function addMoment() {
 		// adding data to the filtered_data_id_only.json
@@ -33,6 +34,7 @@
 		descriptionDataStore.update((currentDescriptions) => {
 			const newDescriptionPair = {
 				id: currentDescriptions.length + 1,
+				song: song,
 				description: description
 			};
 			return [...currentDescriptions, newDescriptionPair];
@@ -42,7 +44,7 @@
 		fullDataStore.update((currentData) => {
 			const newData = {
 				type: 'Feature',
-				properties: { id: currentData.features.length + 1, description: description },
+				properties: { id: currentData.features.length + 1, song: song, description: description },
 				geometry: {
 					type: 'Point',
 					coordinates: [-117.71319812050054, 34.11885457669316]
@@ -62,6 +64,7 @@
 		});
 		unsubscribe2();
 		description = ''; // Reset the description for next input
+		song = '';
 	}
 </script>
 
@@ -72,10 +75,12 @@
 	<div class="overlay__outer">
 		<div class="overlay__content">
 			<section>
-				<div class="overlay__section-title">How to add to the map</div>
+				<div class="overlay__section-text">What song connects you to this location?</div>
+
+				<textarea bind:value={song} class="songform"></textarea>
 
 				<div class="overlay__section-text">
-					What song connects you to this location?
+					Write a note (optional)
 					<textarea bind:value={description} class="subform"></textarea>
 					<ActionButton on:click={addMoment}>Add</ActionButton>
 				</div>
@@ -152,9 +157,18 @@
 		}
 	}
 
-	.recaptcha-text {
-		margin-top: 0.5em;
-		font-size: 0.75em;
+	.songform {
+		margin: auto;
+		text-align: left;
+		padding-left: 0;
+		padding-top: 0;
+		padding-bottom: 0.4em;
+		padding-right: 0.4em;
+		width: 100%;
+		height: 1em;
+		font-size: 12pt;
+		background-color: #cee7ee;
+		border: 2px solid var(--color-dark);
 	}
 
 	.subform {
@@ -167,7 +181,7 @@
 		width: 100%;
 		height: 18em;
 		font-size: 12pt;
-		background-color: #f0cbdd;
+		background-color: #cee7ee;
 		border: 2px solid var(--color-dark);
 	}
 

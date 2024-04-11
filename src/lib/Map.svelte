@@ -80,11 +80,12 @@
 					if (feature.geometry.type === 'Point') {
 						const coordinates = feature.geometry.coordinates;
 						const id = feature.properties.id; // Assuming `id` is stored in feature properties
-						const description = await getMomentText(id); // Use await to get the description
+						const momentInfo = await getMomentText(id);
 						if (coordinates.length === 2) {
+							const popupContent = `<strong>Song:</strong> ${momentInfo.song}<br><strong>Note:</strong> ${momentInfo.description}`;
 							new Popup()
 								.setLngLat(coordinates as LngLatLike)
-								.setHTML(description)
+								.setHTML(popupContent)
 								.addTo(map);
 						} else {
 							console.error('Invalid coordinates format');
