@@ -13,8 +13,8 @@
 	const maptilerApiKey = 'UHRJl9L3oK7bh3QT6De6';
 	//const maptilerMapReference = 'd27741ff-e220-4106-a5a1-aedace679204';
 	const maptilerMapReference = '99cf5fa2-3c1e-4adf-a1c1-fd879b417597';
-	
-	const initialState = { lng: -117.71319812050054, lat: 34.099885457669316, zoom: 16.5};
+
+	const initialState = { lng: -117.71319812050054, lat: 34.099885457669316, zoom: 16.5 };
 
 	async function getMoment(id: number) {
 		try {
@@ -45,12 +45,12 @@
 				data: moments
 			});
 
-			map.loadImage('src/lib/assets/Musicnotes.png', async function(error, image){
-    		if (error) throw error;
-   	 		map.addImage('Musicnotes', image);
-			console.log("image loaded")
-  			});
-			
+			map.loadImage('src/lib/assets/Musicnotes.png', async function (error, image) {
+				if (error) throw error;
+				map.addImage('Musicnotes', image);
+				console.log('image loaded');
+			});
+
 			// map.addLayer({
 			// id: 'moments-layer',
 			// type: 'circle',
@@ -62,17 +62,16 @@
 			// });
 
 			map.addLayer({
-  			'id': 'moments-layer',
-  			'type': 'symbol',
-  			'source': 'moments',
-  			'layout': {
-    		'icon-image': 'Musicnotes',
-    		'icon-size': ['*', ['get', 'scalerank'], 0.001],
-			'icon-allow-overlap': true 
-  			},
-  			'paint': {}
+				id: 'moments-layer',
+				type: 'symbol',
+				source: 'moments',
+				layout: {
+					'icon-image': 'Musicnotes',
+					'icon-size': ['*', ['get', 'scalerank'], 0.001],
+					'icon-allow-overlap': true
+				},
+				paint: {}
 			});
-
 
 			map.on('click', 'moments-layer', function (e) {
 				if (e.features && e.features.length > 0) {
@@ -97,7 +96,6 @@
 					}
 				}
 			});
-
 
 			// Change the cursor to a pointer when the mouse is over the moments layer.
 			map.on('mouseenter', 'moments-layer', function () {

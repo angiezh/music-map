@@ -23,7 +23,7 @@
 				properties: { id: currentData.features.length + 1 },
 				geometry: {
 					type: 'Point',
-					coordinates: [-73.695114, 45.529621]
+					coordinates: [117.71319812050054, 34.11885457669316]
 				}
 			};
 			return { ...currentData, features: [...currentData.features, newFeature] };
