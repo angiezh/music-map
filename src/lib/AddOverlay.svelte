@@ -167,7 +167,7 @@
 		width: 100%;
 		height: 1em;
 		font-size: 12pt;
-		background-color: #f0cbdd;
+		background-color: #cee7ee;
 		border: 2px solid var(--color-dark);
 	}
 
@@ -181,7 +181,7 @@
 		width: 100%;
 		height: 18em;
 		font-size: 12pt;
-		background-color: #f0cbdd;
+		background-color: #cee7ee;
 		border: 2px solid var(--color-dark);
 	}
 
