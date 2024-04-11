@@ -23,7 +23,7 @@
 				properties: { id: currentData.features.length + 1 },
 				geometry: {
 					type: 'Point',
-					coordinates: [117.71319812050054, 34.11885457669316]
+					coordinates: [-117.71319812050054, 34.11885457669316]
 				}
 			};
 			return { ...currentData, features: [...currentData.features, newFeature] };
@@ -45,17 +45,22 @@
 				properties: { id: currentData.features.length + 1, description: description },
 				geometry: {
 					type: 'Point',
-					coordinates: [-73.695114, 45.529621]
+					coordinates: [-117.71319812050054, 34.11885457669316]
 				}
 			};
 			return { ...currentData, features: [...currentData.features, newData] };
 		});
 
 		// print out updated
-		const unsubscribe = fullDataStore.subscribe((updatedItems) => {
+		const unsubscribe1 = fullDataStore.subscribe((updatedItems) => {
 			console.log('Updated store items:', updatedItems);
 		});
-		unsubscribe();
+		unsubscribe1();
+
+		const unsubscribe2 = descriptionDataStore.subscribe((updatedItems) => {
+			console.log('Updated store items:', updatedItems);
+		});
+		unsubscribe2();
 		description = ''; // Reset the description for next input
 	}
 </script>

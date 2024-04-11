@@ -1,15 +1,13 @@
-import idDescriptionPairs from "$lib/data/id_description_pairs.json";
+import { descriptionDataStore } from '../stores';
 
-interface MomentPair {
-  id: number;
-  description: string;
-}
-
-export function getMomentText(id: number): string {
-  const pairs: MomentPair[] = idDescriptionPairs as MomentPair[];
-  const momentPair: MomentPair | undefined = pairs.find(
-    (pair: MomentPair) => pair.id === id
-  );
-
-  return momentPair ? momentPair.description : "Description not found";
+// Adjusting getMomentText to work asynchronously
+export async function getMomentText(id: number): Promise<string> {
+	return new Promise((resolve) => {
+		// Immediately-invoked function here to ensure cleanup
+		const unsubscribe = descriptionDataStore.subscribe((data) => {
+			const found = data.find((item) => item.id === id);
+			resolve(found ? found.description : 'Description not found');
+		});
+		unsubscribe(); // Unsubscribe right after getting the data
+	});
 }

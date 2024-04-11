@@ -3,6 +3,7 @@
 	import { Map, NavigationControl, Popup, type LngLatLike } from 'maplibre-gl';
 	import { getMomentText } from '$lib/getMomentText';
 	import 'maplibre-gl/dist/maplibre-gl.css';
+	import { filteredDataStore, fullDataStore, descriptionDataStore } from '../stores';
 
 	import moments from '$lib/data/filtered_data_id_only.json';
 
@@ -73,26 +74,21 @@
 				paint: {}
 			});
 
-			map.on('click', 'moments-layer', function (e) {
+			map.on('click', 'moments-layer', async function (e) {
 				if (e.features && e.features.length > 0) {
 					const feature = e.features[0];
 					if (feature.geometry.type === 'Point') {
-						const coordinates = (feature.geometry as GeoJSON.Point).coordinates;
-						getMoment(feature.properties.id)
-							.then((text) => {
-								const description = text;
-								if (coordinates.length === 2) {
-									new Popup()
-										.setLngLat(coordinates as LngLatLike)
-										.setHTML(description)
-										.addTo(map);
-								} else {
-									console.error('Invalid coordinates format');
-								}
-							})
-							.catch((error) => {
-								console.error('Error fetching moment:', error);
-							});
+						const coordinates = feature.geometry.coordinates;
+						const id = feature.properties.id; // Assuming `id` is stored in feature properties
+						const description = await getMomentText(id); // Use await to get the description
+						if (coordinates.length === 2) {
+							new Popup()
+								.setLngLat(coordinates as LngLatLike)
+								.setHTML(description)
+								.addTo(map);
+						} else {
+							console.error('Invalid coordinates format');
+						}
 					}
 				}
 			});
@@ -106,6 +102,15 @@
 			map.on('mouseleave', 'moments-layer', function () {
 				map.getCanvas().style.cursor = '';
 			});
+
+			const unsubscribe = filteredDataStore.subscribe((updatedData) => {
+				if (map.getSource('moments')) {
+					map.getSource('moments').setData(updatedData);
+				}
+			});
+
+			// Clean up the subscription when the component is destroyed
+			onDestroy(unsubscribe);
 		});
 	});
 
