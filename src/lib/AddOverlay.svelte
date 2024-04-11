@@ -71,6 +71,7 @@
 
 				<div class="overlay__section-text">
 					What song connects you to this location?
+					<textarea bind:value={description} class="subform"></textarea>
 					<ActionButton on:click={addMoment}>Add</ActionButton>
 				</div>
 			</section>
