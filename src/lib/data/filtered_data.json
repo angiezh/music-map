@@ -1,32 +1,110 @@
 {
-	"type": "FeatureCollection",
-	"features": [
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 1,
-				"song": "Snooze by SZA",
-				"description": "Really awesome song that my friend showed me last month and we listened to it a lot together."
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.09661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 2,
-				"song": "Love Story by Taylor Swift",
-				"description": "I listened to this song walking to the Hive."
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.71931, 34.10661] }
-		},
-		{
-			"type": "Feature",
-			"properties": {
-				"id": 3,
-				"song": "Good Days by SZA",
-				"description": "I listened to this song everyday freshman year."
-			},
-			"geometry": { "type": "Point", "coordinates": [-117.72531, 34.09661] }
-		}
-	]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1,
+                "song": "Snooze by SZA",
+                "description": "Really awesome song that my friend showed me last month and we listened to it a lot together."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71931,
+                    34.09661
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 2,
+                "song": "Love Story by Taylor Swift",
+                "description": "I listened to this song walking to the Hive."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71931,
+                    34.10661
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 3,
+                "song": "Good Days by SZA",
+                "description": "I listened to this song everyday freshman year."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.72531,
+                    34.09661
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 4,
+                "song": "New Song",
+                "description": "New description"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71931,
+                    34.09661
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1712963958453,
+                "song": "hey",
+                "description": "hi"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71319812050054,
+                    34.11885457669316
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1712963991305,
+                "song": "First test",
+                "description": "testing 101"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71319812050054,
+                    34.11885457669316
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1712964064270,
+                "song": "second test",
+                "description": "POST METHOD SET UP"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.71319812050054,
+                    34.11885457669316
+                ]
+            }
+        }
+    ]
 }

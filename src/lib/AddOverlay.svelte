@@ -16,56 +16,93 @@
 	let description = ''; // For binding to your textarea
 	let song = '';
 
-	function addMoment() {
-		// adding data to the filtered_data_id_only.json
-		filteredDataStore.update((currentData) => {
-			const newFeature = {
-				type: 'Feature',
-				properties: { id: currentData.features.length + 1 },
-				geometry: {
-					type: 'Point',
-					coordinates: [-117.71319812050054, 34.11885457669316]
-				}
-			};
-			return { ...currentData, features: [...currentData.features, newFeature] };
-		});
+	async function addMoment() {
 
-		// adding description pair to the id_description_pairs.json
-		descriptionDataStore.update((currentDescriptions) => {
-			const newDescriptionPair = {
-				id: currentDescriptions.length + 1,
-				song: song,
-				description: description
-			};
-			return [...currentDescriptions, newDescriptionPair];
-		});
+		// Assuming coordinates are obtained dynamically, for now they are hard-coded
+		const coordinates = [-117.71319812050054, 34.11885457669316];
 
-		// adding full data to filtered_data.json
-		fullDataStore.update((currentData) => {
-			const newData = {
-				type: 'Feature',
-				properties: { id: currentData.features.length + 1, song: song, description: description },
-				geometry: {
-					type: 'Point',
-					coordinates: [-117.71319812050054, 34.11885457669316]
-				}
-			};
-			return { ...currentData, features: [...currentData.features, newData] };
-		});
+		// Construct the new moment data
+		const newMomentData = {
+			id: Date.now(),
+			song: song,
+			description: description,
+			coordinates: coordinates
+		};
 
-		// print out updated
-		const unsubscribe1 = fullDataStore.subscribe((updatedItems) => {
-			console.log('Updated store items:', updatedItems);
-		});
-		unsubscribe1();
+		try {
+            const response = await fetch('http://127.0.0.1:5000/moments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newMomentData)
+            });
 
-		const unsubscribe2 = descriptionDataStore.subscribe((updatedItems) => {
-			console.log('Updated store items:', updatedItems);
-		});
-		unsubscribe2();
-		description = ''; // Reset the description for next input
-		song = '';
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log('Success:', result);
+            closeAddOverlay(); // close the overlay on success
+        } catch (error) {
+            console.error('Error:', error);
+        }
 	}
+	
+
+
+		
+
+
+		// // adding data to the filtered_data_id_only.json
+		// filteredDataStore.update((currentData) => {
+		// 	const newFeature = {
+		// 		type: 'Feature',
+		// 		properties: { id: currentData.features.length + 1 },
+		// 		geometry: {
+		// 			type: 'Point',
+		// 			coordinates: [-117.71319812050054, 34.11885457669316]
+		// 		}
+		// 	};
+		// 	return { ...currentData, features: [...currentData.features, newFeature] };
+		// });
+
+		// // adding description pair to the id_description_pairs.json
+		// descriptionDataStore.update((currentDescriptions) => {
+		// 	const newDescriptionPair = {
+		// 		id: currentDescriptions.length + 1,
+		// 		song: song,
+		// 		description: description
+		// 	};
+		// 	return [...currentDescriptions, newDescriptionPair];
+		// });
+
+		// // adding full data to filtered_data.json
+		// fullDataStore.update((currentData) => {
+		// 	const newData = {
+		// 		type: 'Feature',
+		// 		properties: { id: currentData.features.length + 1, song: song, description: description },
+		// 		geometry: {
+		// 			type: 'Point',
+		// 			coordinates: [-117.71319812050054, 34.11885457669316]
+		// 		}
+		// 	};
+		// 	return { ...currentData, features: [...currentData.features, newData] };
+		// });
+
+		// // print out updated
+		// const unsubscribe1 = fullDataStore.subscribe((updatedItems) => {
+		// 	console.log('Updated store items:', updatedItems);
+		// });
+		// unsubscribe1();
+
+		// const unsubscribe2 = descriptionDataStore.subscribe((updatedItems) => {
+		// 	console.log('Updated store items:', updatedItems);
+		// });
+		// unsubscribe2();
+		// description = ''; // Reset the description for next input
+		// song = '';
 </script>
 
 <aside class="overlay overlay--add">
